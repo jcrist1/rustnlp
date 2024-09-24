@@ -30,7 +30,7 @@ class BenchOffsetsVsStrings {
         @Benchmark
         fun benchOffsets(bh: Blackhole) {
             val encode = tok.tokenizeAsOffsets(data).wrapErrAndThrow()
-            encode[0]
+            val res = encode[0]
 
             bh.consume(encode)
         }

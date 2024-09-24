@@ -8,7 +8,7 @@ import com.sun.jna.Structure
 
 internal interface TokResLib: Library {
     fun TokRes_destroy(handle: Pointer)
-    fun TokRes_get(handle: Pointer, i: Long): OptionSlice
+    fun TokRes_get(handle: Pointer, i: Int): OptionSlice
 }
 
 class TokRes internal constructor (
@@ -29,16 +29,16 @@ class TokRes internal constructor (
         internal val lib: TokResLib = Native.load("rustnlp", libClass)
     }
     
-    internal fun getInternal(i: ULong): String? {
+    internal fun getInternal(i: Int): String? {
         
-        val returnVal = lib.TokRes_get(handle, i.toLong());
+        val returnVal = lib.TokRes_get(handle, i);
         
         val intermediateOption = returnVal.option() ?: return null
             return PrimitiveArrayTools.getUtf8(intermediateOption)
                                 
     }
 
-    operator fun get(index: ULong): String {
+    operator fun get(index: Int): String {
         val returnVal = getInternal(index)
         if (returnVal == null) {
             throw IndexOutOfBoundsException("Index $index is out of bounds.")

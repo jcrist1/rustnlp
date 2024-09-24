@@ -8,7 +8,7 @@ import com.sun.jna.Structure
 
 internal interface EncodeResultLib: Library {
     fun EncodeResult_destroy(handle: Pointer)
-    fun EncodeResult_get(handle: Pointer, i: Long): OptionTokenSpanNative
+    fun EncodeResult_get(handle: Pointer, i: Int): OptionTokenSpanNative
 }
 
 class EncodeResult internal constructor (
@@ -29,9 +29,9 @@ class EncodeResult internal constructor (
         internal val lib: EncodeResultLib = Native.load("rustnlp", libClass)
     }
     
-    internal fun getInternal(i: ULong): TokenSpan? {
+    internal fun getInternal(i: Int): TokenSpan? {
         
-        val returnVal = lib.EncodeResult_get(handle, i.toLong());
+        val returnVal = lib.EncodeResult_get(handle, i);
         
         val intermediateOption = returnVal.option() ?: return null
         
@@ -40,7 +40,7 @@ class EncodeResult internal constructor (
                                 
     }
 
-    operator fun get(index: ULong): TokenSpan {
+    operator fun get(index: Int): TokenSpan {
         val returnVal = getInternal(index)
         if (returnVal == null) {
             throw IndexOutOfBoundsException("Index $index is out of bounds.")
