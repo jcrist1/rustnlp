@@ -1,0 +1,14 @@
+[package]
+name = "rustnlp"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate_type = ["cdylib"]
+
+[dependencies]
+diplomat-runtime = { git = "https://github.com/rust-diplomat/diplomat", rev = "588f6ffe413bfca367bbb2a749a5965d40a3d5b3", package = "diplomat-runtime"}
+diplomat = { git = "https://github.com/rust-diplomat/diplomat", rev = "588f6ffe413bfca367bbb2a749a5965d40a3d5b3", package = "diplomat" }
+tokenizers = { version = "0.20.0", features = ["unstable_wasm"], default-features = false }
+rust-stemmers = "1.2.0"
+whichlang = "0.1.0"
