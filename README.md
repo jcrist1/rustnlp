@@ -12,8 +12,9 @@ Interface API](https://openjdk.org/projects/panama/).
 
 The benefits of this are mostly significant speedups. This repository includes benchmarks. In kotlin we try multiple 
 approaches to improve performance, but any ergonomic approach yields a 2-3x longer runtime. This seems to be mostly
-overhead from converting native data into JVM data. The Kotlin and Java benchmarks are written with jmh, and the 
-rust benchmark uses criterion (hence the different reporting).
+overhead from converting native data into JVM data. By comparison the Panama backend only has a ~10% overhead. 
+The Kotlin and Java benchmarks are written with jmh, and the rust benchmark uses criterion (hence the different 
+reporting).
 - Kotlin: 
   - BenchOffsetsVsStrings.benchOffsets: Provides a list of structures which contain the UTF16 offsets  
     - 1409634,952 ± 338410,783  ns/op
