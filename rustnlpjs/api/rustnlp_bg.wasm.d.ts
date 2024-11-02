@@ -1,0 +1,37 @@
+/* tslint:disable */
+/* eslint-disable */
+export const memory: WebAssembly.Memory;
+export function BoxErr_get(a: number, b: number): void;
+export function BoxErr_destroy(a: number): void;
+export function EncodeResult_get(a: number, b: number, c: number): void;
+export function EncodeResult_get_by_idx(a: number, b: number, c: number): void;
+export function EncodeResult_len(a: number): number;
+export function EncodeResult_is_empty(a: number): number;
+export function EncodeResult_pair_seq(a: number): number;
+export function EncodeResult_destroy(a: number): void;
+export function PairSeq_destroy(a: number): void;
+export function Stem_create(): number;
+export function Stem_stem(a: number, b: number, c: number): number;
+export function Stem_destroy(a: number): void;
+export function Strings_destroy(a: number): void;
+export function Strr_destroy(a: number, b: number): void;
+export function Tok_create(): number;
+export function Tok_tokenize(a: number, b: number, c: number): number;
+export function Tok_tokenize_as_offsets(a: number, b: number, c: number): number;
+export function Tok_destroy(a: number): void;
+export function TokRes_get(a: number, b: number, c: number): void;
+export function TokRes_get_by_idx(a: number, b: number, c: number): void;
+export function TokRes_len(a: number): number;
+export function TokRes_is_empty(a: number): number;
+export function TokRes_destroy(a: number): void;
+export function PairSeq_get_slice(a: number, b: number): void;
+export function diplomat_init(): void;
+export function diplomat_simple_write(a: number, b: number, c: number): void;
+export function diplomat_buffer_write_create(a: number): number;
+export function diplomat_buffer_write_get_bytes(a: number): number;
+export function diplomat_buffer_write_len(a: number): number;
+export function diplomat_buffer_write_destroy(a: number): void;
+export function diplomat_alloc(a: number, b: number): number;
+export function diplomat_free(a: number, b: number, c: number): void;
+export function diplomat_is_str(a: number, b: number): number;
+export function __wbindgen_exn_store(a: number): void;

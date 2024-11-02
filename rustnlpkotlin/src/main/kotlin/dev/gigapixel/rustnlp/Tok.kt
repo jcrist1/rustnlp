@@ -9,8 +9,8 @@ import com.sun.jna.Structure
 internal interface TokLib: Library {
     fun Tok_destroy(handle: Pointer)
     fun Tok_create(): Pointer
-    fun Tok_tokenize(handle: Pointer, text: Slice): ResultPointerPointer
-    fun Tok_tokenize_as_offsets(handle: Pointer, text: Slice): ResultPointerPointer
+    fun Tok_tokenize(handle: Pointer, text: Slice): Pointer
+    fun Tok_tokenize_as_offsets(handle: Pointer, text: Slice): Pointer
 }
 
 class Tok internal constructor (
@@ -41,46 +41,28 @@ class Tok internal constructor (
         }
     }
     
-    fun tokenize(text: String): Res<TokRes, BoxErr> {
+    fun tokenize(text: String): TokRes {
         val (textMem, textSlice) = PrimitiveArrayTools.readUtf8(text)
         
         val returnVal = lib.Tok_tokenize(handle, textSlice);
-        if (returnVal.isOk == 1.toByte()) {
-            val selfEdges: List<Any> = listOf()
-            val handle = returnVal.union.ok 
-            val returnOpaque = TokRes(handle, selfEdges)
-            CLEANER.register(returnOpaque, TokRes.TokResCleaner(handle, TokRes.lib));
-            textMem.close()
-            return returnOpaque.ok()
-        } else {
-            val selfEdges: List<Any> = listOf()
-            val handle = returnVal.union.err 
-            val returnOpaque = BoxErr(handle, selfEdges)
-            CLEANER.register(returnOpaque, BoxErr.BoxErrCleaner(handle, BoxErr.lib));
-            textMem.close()
-            return returnOpaque.err()
-        }
+        val selfEdges: List<Any> = listOf()
+        val handle = returnVal 
+        val returnOpaque = TokRes(handle, selfEdges)
+        CLEANER.register(returnOpaque, TokRes.TokResCleaner(handle, TokRes.lib));
+        textMem.close()
+        return returnOpaque
     }
     
-    fun tokenizeAsOffsets(text: String): Res<EncodeResult, BoxErr> {
+    fun tokenizeAsOffsets(text: String): EncodeResult {
         val (textMem, textSlice) = PrimitiveArrayTools.readUtf8(text)
         
         val returnVal = lib.Tok_tokenize_as_offsets(handle, textSlice);
-        if (returnVal.isOk == 1.toByte()) {
-            val selfEdges: List<Any> = listOf()
-            val handle = returnVal.union.ok 
-            val returnOpaque = EncodeResult(handle, selfEdges)
-            CLEANER.register(returnOpaque, EncodeResult.EncodeResultCleaner(handle, EncodeResult.lib));
-            textMem.close()
-            return returnOpaque.ok()
-        } else {
-            val selfEdges: List<Any> = listOf()
-            val handle = returnVal.union.err 
-            val returnOpaque = BoxErr(handle, selfEdges)
-            CLEANER.register(returnOpaque, BoxErr.BoxErrCleaner(handle, BoxErr.lib));
-            textMem.close()
-            return returnOpaque.err()
-        }
+        val selfEdges: List<Any> = listOf()
+        val handle = returnVal 
+        val returnOpaque = EncodeResult(handle, selfEdges)
+        CLEANER.register(returnOpaque, EncodeResult.EncodeResultCleaner(handle, EncodeResult.lib));
+        textMem.close()
+        return returnOpaque
     }
 
 }

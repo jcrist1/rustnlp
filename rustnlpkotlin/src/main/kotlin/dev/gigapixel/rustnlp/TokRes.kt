@@ -9,6 +9,9 @@ import com.sun.jna.Structure
 internal interface TokResLib: Library {
     fun TokRes_destroy(handle: Pointer)
     fun TokRes_get(handle: Pointer, i: Int): OptionSlice
+    fun TokRes_get_by_idx(handle: Pointer, i: Int): Slice
+    fun TokRes_len(handle: Pointer): Int
+    fun TokRes_is_empty(handle: Pointer): Byte
 }
 
 class TokRes internal constructor (
@@ -36,6 +39,24 @@ class TokRes internal constructor (
         val intermediateOption = returnVal.option() ?: return null
             return PrimitiveArrayTools.getUtf8(intermediateOption)
                                 
+    }
+    
+    fun getByIdx(i: Int): String {
+        
+        val returnVal = lib.TokRes_get_by_idx(handle, i);
+            return PrimitiveArrayTools.getUtf8(returnVal)
+    }
+    
+    fun len(): Int {
+        
+        val returnVal = lib.TokRes_len(handle);
+        return (returnVal)
+    }
+    
+    fun isEmpty(): Boolean {
+        
+        val returnVal = lib.TokRes_is_empty(handle);
+        return (returnVal > 0)
     }
 
     operator fun get(index: Int): String {

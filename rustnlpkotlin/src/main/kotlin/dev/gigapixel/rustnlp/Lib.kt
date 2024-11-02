@@ -347,25 +347,6 @@ fun <T, E> E.err(): Res<T, E> {
     return Err(this)
 }
 
-internal class ResultPointerPointerUnion: Union() {
-    @JvmField
-    internal var ok: Pointer = Pointer(0)
-    @JvmField
-    internal var err: Pointer = Pointer(0)
-}
-
-class ResultPointerPointer: Structure(), Structure.ByValue  {
-    @JvmField
-    internal var union: ResultPointerPointerUnion = ResultPointerPointerUnion()
-
-    @JvmField
-    internal var isOk: Byte = 0
-
-    // Define the fields of the struct
-    override fun getFieldOrder(): List<String> {
-        return listOf("union", "isOk")
-    }
-}
 
 
 internal class OptionSlice: Structure(), Structure.ByValue  {

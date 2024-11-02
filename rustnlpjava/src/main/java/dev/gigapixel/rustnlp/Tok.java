@@ -41,8 +41,41 @@ public class Tok {
 
     }
     
+    public static Tok create() {
+        
+        var nativeVal = rustnlp_h.Tok_create();
+        
+        List<Object> selfEdges = List.of();
+        
+        
+        
+        var returnVal = new Tok(nativeVal, selfEdges);
+        return returnVal;
+                
+    }
+    
     
     public TokRes tokenize(String text) {
+        
+        try(var arena = Arena.ofConfined()) {
+
+            var textData = arena.allocateFrom(text, StandardCharsets.UTF_8);
+            var textLen = textData.byteSize() - 1;  // allocated strings are null terminated
+            var textView = DiplomatStringView.allocate(arena);
+            DiplomatStringView.len(textView, textLen);
+            DiplomatStringView.data(textView, textData);
+            var nativeVal = rustnlp_h.Tok_tokenize(internal, textView);
+
+            List<Object> selfEdges = List.of(textData, textView, arena);
+
+
+            var returnVal = new TokRes(nativeVal, selfEdges);
+            return returnVal;
+        }
+                    
+    }
+    
+    public EncodeResult tokenizeAsOffsets(String text) {
         
         try (var arena = Arena.ofConfined()) {
             
@@ -51,13 +84,13 @@ public class Tok {
             var textView = DiplomatStringView.allocate(Arena.ofAuto());
             DiplomatStringView.len(textView, textLen);
             DiplomatStringView.data(textView, textData);
-            var nativeVal = rustnlp_h.Tok_tokenize(internal, textView);
+            var nativeVal = rustnlp_h.Tok_tokenize_as_offsets(internal, textView);
             
             List<Object> selfEdges = List.of();
             
             
             
-            var returnVal = new TokRes(nativeVal, selfEdges);
+            var returnVal = new EncodeResult(nativeVal, selfEdges);
             return returnVal;
                     
         }

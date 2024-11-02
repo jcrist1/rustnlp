@@ -1,0 +1,26 @@
+{
+  "name": "rustnlpjs",
+  "version": "0.0.1",
+  "description": "NLP tools",
+  "exports": {
+    ".": {
+      "default": "./api/index.mjs",
+      "types": "./api/index.d.ts"
+    }
+  },
+  "main": "main.js",
+  "type": "module",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "pretest": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "benchmark": "^2.1.4"
+  }
+}

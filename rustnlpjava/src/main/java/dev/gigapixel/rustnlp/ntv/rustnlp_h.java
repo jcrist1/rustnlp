@@ -28,7 +28,7 @@ public class rustnlp_h {
          System.out.printf("%s(%s)\n", name, traceArgs);
     }
 
-    static MemorySegment findOrThrow(String symbol) {
+    public static MemorySegment findOrThrow(String symbol) {
         return SYMBOL_LOOKUP.find(symbol)
             .orElseThrow(() -> new UnsatisfiedLinkError("unresolved symbol: " + symbol));
     }
@@ -9839,7 +9839,810 @@ public class rustnlp_h {
         }
     }
 
-    private static class Tok_tokenize {
+    private static class BoxErr_get {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            DiplomatStringView.layout(),
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("BoxErr_get");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * DiplomatStringView BoxErr_get(const BoxErr *self)
+     * }
+     */
+    public static FunctionDescriptor BoxErr_get$descriptor() {
+        return BoxErr_get.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * DiplomatStringView BoxErr_get(const BoxErr *self)
+     * }
+     */
+    public static MethodHandle BoxErr_get$handle() {
+        return BoxErr_get.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * DiplomatStringView BoxErr_get(const BoxErr *self)
+     * }
+     */
+    public static MemorySegment BoxErr_get$address() {
+        return BoxErr_get.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * DiplomatStringView BoxErr_get(const BoxErr *self)
+     * }
+     */
+    public static MemorySegment BoxErr_get(SegmentAllocator allocator, MemorySegment self) {
+        var mh$ = BoxErr_get.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("BoxErr_get", allocator, self);
+            }
+            return (MemorySegment)mh$.invokeExact(allocator, self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class BoxErr_destroy {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("BoxErr_destroy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void BoxErr_destroy(BoxErr *self)
+     * }
+     */
+    public static FunctionDescriptor BoxErr_destroy$descriptor() {
+        return BoxErr_destroy.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void BoxErr_destroy(BoxErr *self)
+     * }
+     */
+    public static MethodHandle BoxErr_destroy$handle() {
+        return BoxErr_destroy.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void BoxErr_destroy(BoxErr *self)
+     * }
+     */
+    public static MemorySegment BoxErr_destroy$address() {
+        return BoxErr_destroy.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void BoxErr_destroy(BoxErr *self)
+     * }
+     */
+    public static void BoxErr_destroy(MemorySegment self) {
+        var mh$ = BoxErr_destroy.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("BoxErr_destroy", self);
+            }
+            mh$.invokeExact(self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class EncodeResult_get_by_idx {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            TokenSpan.layout(),
+            rustnlp_h.C_POINTER,
+            rustnlp_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("EncodeResult_get_by_idx");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * TokenSpan EncodeResult_get_by_idx(const EncodeResult *self, int32_t i)
+     * }
+     */
+    public static FunctionDescriptor EncodeResult_get_by_idx$descriptor() {
+        return EncodeResult_get_by_idx.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * TokenSpan EncodeResult_get_by_idx(const EncodeResult *self, int32_t i)
+     * }
+     */
+    public static MethodHandle EncodeResult_get_by_idx$handle() {
+        return EncodeResult_get_by_idx.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * TokenSpan EncodeResult_get_by_idx(const EncodeResult *self, int32_t i)
+     * }
+     */
+    public static MemorySegment EncodeResult_get_by_idx$address() {
+        return EncodeResult_get_by_idx.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * TokenSpan EncodeResult_get_by_idx(const EncodeResult *self, int32_t i)
+     * }
+     */
+    public static MemorySegment EncodeResult_get_by_idx(SegmentAllocator allocator, MemorySegment self, int i) {
+        var mh$ = EncodeResult_get_by_idx.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("EncodeResult_get_by_idx", allocator, self, i);
+            }
+            return (MemorySegment)mh$.invokeExact(allocator, self, i);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class EncodeResult_len {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            rustnlp_h.C_INT,
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("EncodeResult_len");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int32_t EncodeResult_len(const EncodeResult *self)
+     * }
+     */
+    public static FunctionDescriptor EncodeResult_len$descriptor() {
+        return EncodeResult_len.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int32_t EncodeResult_len(const EncodeResult *self)
+     * }
+     */
+    public static MethodHandle EncodeResult_len$handle() {
+        return EncodeResult_len.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int32_t EncodeResult_len(const EncodeResult *self)
+     * }
+     */
+    public static MemorySegment EncodeResult_len$address() {
+        return EncodeResult_len.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int32_t EncodeResult_len(const EncodeResult *self)
+     * }
+     */
+    public static int EncodeResult_len(MemorySegment self) {
+        var mh$ = EncodeResult_len.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("EncodeResult_len", self);
+            }
+            return (int)mh$.invokeExact(self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class EncodeResult_is_empty {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            rustnlp_h.C_BOOL,
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("EncodeResult_is_empty");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * bool EncodeResult_is_empty(const EncodeResult *self)
+     * }
+     */
+    public static FunctionDescriptor EncodeResult_is_empty$descriptor() {
+        return EncodeResult_is_empty.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * bool EncodeResult_is_empty(const EncodeResult *self)
+     * }
+     */
+    public static MethodHandle EncodeResult_is_empty$handle() {
+        return EncodeResult_is_empty.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * bool EncodeResult_is_empty(const EncodeResult *self)
+     * }
+     */
+    public static MemorySegment EncodeResult_is_empty$address() {
+        return EncodeResult_is_empty.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * bool EncodeResult_is_empty(const EncodeResult *self)
+     * }
+     */
+    public static boolean EncodeResult_is_empty(MemorySegment self) {
+        var mh$ = EncodeResult_is_empty.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("EncodeResult_is_empty", self);
+            }
+            return (boolean)mh$.invokeExact(self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class EncodeResult_pair_seq {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            rustnlp_h.C_POINTER,
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("EncodeResult_pair_seq");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * PairSeq *EncodeResult_pair_seq(const EncodeResult *self)
+     * }
+     */
+    public static FunctionDescriptor EncodeResult_pair_seq$descriptor() {
+        return EncodeResult_pair_seq.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * PairSeq *EncodeResult_pair_seq(const EncodeResult *self)
+     * }
+     */
+    public static MethodHandle EncodeResult_pair_seq$handle() {
+        return EncodeResult_pair_seq.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * PairSeq *EncodeResult_pair_seq(const EncodeResult *self)
+     * }
+     */
+    public static MemorySegment EncodeResult_pair_seq$address() {
+        return EncodeResult_pair_seq.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * PairSeq *EncodeResult_pair_seq(const EncodeResult *self)
+     * }
+     */
+    public static MemorySegment EncodeResult_pair_seq(MemorySegment self) {
+        var mh$ = EncodeResult_pair_seq.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("EncodeResult_pair_seq", self);
+            }
+            return (MemorySegment)mh$.invokeExact(self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class EncodeResult_destroy {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("EncodeResult_destroy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void EncodeResult_destroy(EncodeResult *self)
+     * }
+     */
+    public static FunctionDescriptor EncodeResult_destroy$descriptor() {
+        return EncodeResult_destroy.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void EncodeResult_destroy(EncodeResult *self)
+     * }
+     */
+    public static MethodHandle EncodeResult_destroy$handle() {
+        return EncodeResult_destroy.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void EncodeResult_destroy(EncodeResult *self)
+     * }
+     */
+    public static MemorySegment EncodeResult_destroy$address() {
+        return EncodeResult_destroy.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void EncodeResult_destroy(EncodeResult *self)
+     * }
+     */
+    public static void EncodeResult_destroy(MemorySegment self) {
+        var mh$ = EncodeResult_destroy.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("EncodeResult_destroy", self);
+            }
+            mh$.invokeExact(self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PairSeq_get_slice {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            DiplomatI32View.layout(),
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("PairSeq_get_slice");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * DiplomatI32View PairSeq_get_slice(const PairSeq *self)
+     * }
+     */
+    public static FunctionDescriptor PairSeq_get_slice$descriptor() {
+        return PairSeq_get_slice.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * DiplomatI32View PairSeq_get_slice(const PairSeq *self)
+     * }
+     */
+    public static MethodHandle PairSeq_get_slice$handle() {
+        return PairSeq_get_slice.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * DiplomatI32View PairSeq_get_slice(const PairSeq *self)
+     * }
+     */
+    public static MemorySegment PairSeq_get_slice$address() {
+        return PairSeq_get_slice.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * DiplomatI32View PairSeq_get_slice(const PairSeq *self)
+     * }
+     */
+    public static MemorySegment PairSeq_get_slice(SegmentAllocator allocator, MemorySegment self) {
+        var mh$ = PairSeq_get_slice.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PairSeq_get_slice", allocator, self);
+            }
+            return (MemorySegment)mh$.invokeExact(allocator, self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PairSeq_destroy {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("PairSeq_destroy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void PairSeq_destroy(PairSeq *self)
+     * }
+     */
+    public static FunctionDescriptor PairSeq_destroy$descriptor() {
+        return PairSeq_destroy.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void PairSeq_destroy(PairSeq *self)
+     * }
+     */
+    public static MethodHandle PairSeq_destroy$handle() {
+        return PairSeq_destroy.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void PairSeq_destroy(PairSeq *self)
+     * }
+     */
+    public static MemorySegment PairSeq_destroy$address() {
+        return PairSeq_destroy.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void PairSeq_destroy(PairSeq *self)
+     * }
+     */
+    public static void PairSeq_destroy(MemorySegment self) {
+        var mh$ = PairSeq_destroy.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PairSeq_destroy", self);
+            }
+            mh$.invokeExact(self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class Stem_create {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            rustnlp_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("Stem_create");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * Stem *Stem_create()
+     * }
+     */
+    public static FunctionDescriptor Stem_create$descriptor() {
+        return Stem_create.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * Stem *Stem_create()
+     * }
+     */
+    public static MethodHandle Stem_create$handle() {
+        return Stem_create.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * Stem *Stem_create()
+     * }
+     */
+    public static MemorySegment Stem_create$address() {
+        return Stem_create.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * Stem *Stem_create()
+     * }
+     */
+    public static MemorySegment Stem_create() {
+        var mh$ = Stem_create.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("Stem_create");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class Stem_destroy {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("Stem_destroy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void Stem_destroy(Stem *self)
+     * }
+     */
+    public static FunctionDescriptor Stem_destroy$descriptor() {
+        return Stem_destroy.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void Stem_destroy(Stem *self)
+     * }
+     */
+    public static MethodHandle Stem_destroy$handle() {
+        return Stem_destroy.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void Stem_destroy(Stem *self)
+     * }
+     */
+    public static MemorySegment Stem_destroy$address() {
+        return Stem_destroy.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void Stem_destroy(Stem *self)
+     * }
+     */
+    public static void Stem_destroy(MemorySegment self) {
+        var mh$ = Stem_destroy.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("Stem_destroy", self);
+            }
+            mh$.invokeExact(self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class Strings_destroy {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("Strings_destroy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void Strings_destroy(Strings *self)
+     * }
+     */
+    public static FunctionDescriptor Strings_destroy$descriptor() {
+        return Strings_destroy.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void Strings_destroy(Strings *self)
+     * }
+     */
+    public static MethodHandle Strings_destroy$handle() {
+        return Strings_destroy.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void Strings_destroy(Strings *self)
+     * }
+     */
+    public static MemorySegment Strings_destroy$address() {
+        return Strings_destroy.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void Strings_destroy(Strings *self)
+     * }
+     */
+    public static void Strings_destroy(MemorySegment self) {
+        var mh$ = Strings_destroy.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("Strings_destroy", self);
+            }
+            mh$.invokeExact(self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class Strr_destroy {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("Strr_destroy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void Strr_destroy(Strr *self)
+     * }
+     */
+    public static FunctionDescriptor Strr_destroy$descriptor() {
+        return Strr_destroy.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void Strr_destroy(Strr *self)
+     * }
+     */
+    public static MethodHandle Strr_destroy$handle() {
+        return Strr_destroy.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void Strr_destroy(Strr *self)
+     * }
+     */
+    public static MemorySegment Strr_destroy$address() {
+        return Strr_destroy.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void Strr_destroy(Strr *self)
+     * }
+     */
+    public static void Strr_destroy(MemorySegment self) {
+        var mh$ = Strr_destroy.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("Strr_destroy", self);
+            }
+            mh$.invokeExact(self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class Tok_create {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            rustnlp_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("Tok_create");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * Tok *Tok_create()
+     * }
+     */
+    public static FunctionDescriptor Tok_create$descriptor() {
+        return Tok_create.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * Tok *Tok_create()
+     * }
+     */
+    public static MethodHandle Tok_create$handle() {
+        return Tok_create.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * Tok *Tok_create()
+     * }
+     */
+    public static MemorySegment Tok_create$address() {
+        return Tok_create.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * Tok *Tok_create()
+     * }
+     */
+    public static MemorySegment Tok_create() {
+        var mh$ = Tok_create.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("Tok_create");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    public static class Tok_tokenize {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             rustnlp_h.C_POINTER,
             rustnlp_h.C_POINTER,
@@ -9891,6 +10694,65 @@ public class rustnlp_h {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("Tok_tokenize", self, text);
+            }
+            return (MemorySegment)mh$.invokeExact(self, text);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class Tok_tokenize_as_offsets {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            rustnlp_h.C_POINTER,
+            rustnlp_h.C_POINTER,
+            DiplomatStringView.layout()
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("Tok_tokenize_as_offsets");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * EncodeResult *Tok_tokenize_as_offsets(const Tok *self, DiplomatStringView text)
+     * }
+     */
+    public static FunctionDescriptor Tok_tokenize_as_offsets$descriptor() {
+        return Tok_tokenize_as_offsets.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * EncodeResult *Tok_tokenize_as_offsets(const Tok *self, DiplomatStringView text)
+     * }
+     */
+    public static MethodHandle Tok_tokenize_as_offsets$handle() {
+        return Tok_tokenize_as_offsets.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * EncodeResult *Tok_tokenize_as_offsets(const Tok *self, DiplomatStringView text)
+     * }
+     */
+    public static MemorySegment Tok_tokenize_as_offsets$address() {
+        return Tok_tokenize_as_offsets.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * EncodeResult *Tok_tokenize_as_offsets(const Tok *self, DiplomatStringView text)
+     * }
+     */
+    public static MemorySegment Tok_tokenize_as_offsets(MemorySegment self, MemorySegment text) {
+        var mh$ = Tok_tokenize_as_offsets.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("Tok_tokenize_as_offsets", self, text);
             }
             return (MemorySegment)mh$.invokeExact(self, text);
         } catch (Throwable ex$) {
@@ -9955,13 +10817,14 @@ public class rustnlp_h {
         }
     }
 
-    private static class TokRes_get_str_token {
+    private static class TokRes_get_by_idx {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             DiplomatStringView.layout(),
-            rustnlp_h.C_POINTER
+            rustnlp_h.C_POINTER,
+            rustnlp_h.C_INT
         );
 
-        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("TokRes_get_str_token");
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("TokRes_get_by_idx");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9969,45 +10832,161 @@ public class rustnlp_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * DiplomatStringView TokRes_get_str_token(const TokRes *self)
+     * DiplomatStringView TokRes_get_by_idx(const TokRes *self, int32_t i)
      * }
      */
-    public static FunctionDescriptor TokRes_get_str_token$descriptor() {
-        return TokRes_get_str_token.DESC;
+    public static FunctionDescriptor TokRes_get_by_idx$descriptor() {
+        return TokRes_get_by_idx.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * DiplomatStringView TokRes_get_str_token(const TokRes *self)
+     * DiplomatStringView TokRes_get_by_idx(const TokRes *self, int32_t i)
      * }
      */
-    public static MethodHandle TokRes_get_str_token$handle() {
-        return TokRes_get_str_token.HANDLE;
+    public static MethodHandle TokRes_get_by_idx$handle() {
+        return TokRes_get_by_idx.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * DiplomatStringView TokRes_get_str_token(const TokRes *self)
+     * DiplomatStringView TokRes_get_by_idx(const TokRes *self, int32_t i)
      * }
      */
-    public static MemorySegment TokRes_get_str_token$address() {
-        return TokRes_get_str_token.ADDR;
+    public static MemorySegment TokRes_get_by_idx$address() {
+        return TokRes_get_by_idx.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * DiplomatStringView TokRes_get_str_token(const TokRes *self)
+     * DiplomatStringView TokRes_get_by_idx(const TokRes *self, int32_t i)
      * }
      */
-    public static MemorySegment TokRes_get_str_token(SegmentAllocator allocator, MemorySegment self) {
-        var mh$ = TokRes_get_str_token.HANDLE;
+    public static MemorySegment TokRes_get_by_idx(SegmentAllocator allocator, MemorySegment self, int i) {
+        var mh$ = TokRes_get_by_idx.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("TokRes_get_str_token", allocator, self);
+                traceDowncall("TokRes_get_by_idx", allocator, self, i);
             }
-            return (MemorySegment)mh$.invokeExact(allocator, self);
+            return (MemorySegment)mh$.invokeExact(allocator, self, i);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class TokRes_len {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            rustnlp_h.C_INT,
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("TokRes_len");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int32_t TokRes_len(const TokRes *self)
+     * }
+     */
+    public static FunctionDescriptor TokRes_len$descriptor() {
+        return TokRes_len.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int32_t TokRes_len(const TokRes *self)
+     * }
+     */
+    public static MethodHandle TokRes_len$handle() {
+        return TokRes_len.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int32_t TokRes_len(const TokRes *self)
+     * }
+     */
+    public static MemorySegment TokRes_len$address() {
+        return TokRes_len.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int32_t TokRes_len(const TokRes *self)
+     * }
+     */
+    public static int TokRes_len(MemorySegment self) {
+        var mh$ = TokRes_len.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("TokRes_len", self);
+            }
+            return (int)mh$.invokeExact(self);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class TokRes_is_empty {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            rustnlp_h.C_BOOL,
+            rustnlp_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = rustnlp_h.findOrThrow("TokRes_is_empty");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * bool TokRes_is_empty(const TokRes *self)
+     * }
+     */
+    public static FunctionDescriptor TokRes_is_empty$descriptor() {
+        return TokRes_is_empty.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * bool TokRes_is_empty(const TokRes *self)
+     * }
+     */
+    public static MethodHandle TokRes_is_empty$handle() {
+        return TokRes_is_empty.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * bool TokRes_is_empty(const TokRes *self)
+     * }
+     */
+    public static MemorySegment TokRes_is_empty$address() {
+        return TokRes_is_empty.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * bool TokRes_is_empty(const TokRes *self)
+     * }
+     */
+    public static boolean TokRes_is_empty(MemorySegment self) {
+        var mh$ = TokRes_is_empty.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("TokRes_is_empty", self);
+            }
+            return (boolean)mh$.invokeExact(self);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10110,13 +11089,13 @@ public class rustnlp_h {
     }
     /**
      * {@snippet lang=c :
-     * #define __ASSERT_FILE_NAME "jextract$16735813408378630861.h"
+     * #define __ASSERT_FILE_NAME "jextract$1852946489405943087.h"
      * }
      */
     public static MemorySegment __ASSERT_FILE_NAME() {
         class Holder {
             static final MemorySegment __ASSERT_FILE_NAME
-                = rustnlp_h.LIBRARY_ARENA.allocateFrom("jextract$16735813408378630861.h");
+                = rustnlp_h.LIBRARY_ARENA.allocateFrom("jextract$1852946489405943087.h");
         }
         return Holder.__ASSERT_FILE_NAME;
     }

@@ -42,17 +42,38 @@ public class TokRes {
     }
     
     
-    public String getStrToken() {
+    public String getByIdx(int i) {
         
         try (var arena = Arena.ofConfined()) {
             
             
-            var nativeVal = rustnlp_h.TokRes_get_str_token(arena, internal);
-            
+            var iNative = i;
+            var nativeVal = rustnlp_h.TokRes_get_by_idx(arena, internal, iNative);
+
             var returnVal = SliceUtils.readUtf8(nativeVal);
             return returnVal;
                     
         }
+    }
+    
+    public int len() {
+        
+        
+        var nativeVal = rustnlp_h.TokRes_len(internal);
+        
+        var returnVal = nativeVal;
+        return returnVal;
+                
+    }
+    
+    public boolean isEmpty() {
+        
+        
+        var nativeVal = rustnlp_h.TokRes_is_empty(internal);
+        
+        var returnVal = nativeVal;
+        return returnVal;
+                
     }
     
 }

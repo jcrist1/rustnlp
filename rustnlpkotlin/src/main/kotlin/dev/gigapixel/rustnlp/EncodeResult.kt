@@ -9,6 +9,10 @@ import com.sun.jna.Structure
 internal interface EncodeResultLib: Library {
     fun EncodeResult_destroy(handle: Pointer)
     fun EncodeResult_get(handle: Pointer, i: Int): OptionTokenSpanNative
+    fun EncodeResult_get_by_idx(handle: Pointer, i: Int): TokenSpanNative
+    fun EncodeResult_len(handle: Pointer): Int
+    fun EncodeResult_is_empty(handle: Pointer): Byte
+    fun EncodeResult_pair_seq(handle: Pointer): Pointer
 }
 
 class EncodeResult internal constructor (
@@ -38,6 +42,36 @@ class EncodeResult internal constructor (
         val returnStruct = TokenSpan(intermediateOption)
         return returnStruct
                                 
+    }
+    
+    fun getByIdx(i: Int): TokenSpan {
+        
+        val returnVal = lib.EncodeResult_get_by_idx(handle, i);
+        
+        val returnStruct = TokenSpan(returnVal)
+        return returnStruct
+    }
+    
+    fun len(): Int {
+        
+        val returnVal = lib.EncodeResult_len(handle);
+        return (returnVal)
+    }
+    
+    fun isEmpty(): Boolean {
+        
+        val returnVal = lib.EncodeResult_is_empty(handle);
+        return (returnVal > 0)
+    }
+    
+    fun pairSeq(): PairSeq {
+        
+        val returnVal = lib.EncodeResult_pair_seq(handle);
+        val selfEdges: List<Any> = listOf()
+        val handle = returnVal 
+        val returnOpaque = PairSeq(handle, selfEdges)
+        CLEANER.register(returnOpaque, PairSeq.PairSeqCleaner(handle, PairSeq.lib));
+        return returnOpaque
     }
 
     operator fun get(index: Int): TokenSpan {

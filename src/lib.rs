@@ -31,19 +31,21 @@ pub mod ffi {
             Box::new(Tok(tkz))
         }
 
-        pub fn tokenize(&self, text: &str) -> Result<Box<TokRes>, Box<BoxErr>> {
-            let encode = self
-                .0
-                .encode_fast(text, false)
-                .map_err(|err| Box::new(BoxErr(err.to_string())))?;
-            Ok(Box::new(TokRes(encode)))
+        pub fn tokenize(&self, text: &str) -> Box<TokRes> {
+            // println!("TO ENCODE: {text}");
+            let encode = self.0.encode_fast(text, false).expect("Failed to encode");
+            // .map_err(|err| Box::new(BoxErr(err.to_string())))?;
+            // println!("{:?}", encode.get_tokens());
+            Box::new(TokRes(encode))
         }
-        pub fn tokenize_as_offsets(&self, text: &str) -> Result<Box<EncodeResult>, Box<BoxErr>> {
+        pub fn tokenize_as_offsets(&self, text: &str) -> Box<EncodeResult> {
             let enc = self
                 .0
                 .encode_char_offsets(text, true)
-                .map_err(|err| Box::new(BoxErr(err.to_string())))?;
+                // .map_err(|err| Box::new(BoxErr(err.to_string())))
+                .expect("failed to encode");
             let offsets = enc.get_offsets();
+            let offsets = &offsets[0..(offsets.len() - 1)];
             let (chars_len_16, chars_len_8) = text
                 .chars()
                 .map(|char| (char.len_utf16(), char.len_utf8()))
@@ -67,18 +69,35 @@ pub mod ffi {
                 offsets_8.push((start_8, end_8));
             }
 
-            Ok(Box::new(EncodeResult {
+            Box::new(EncodeResult {
                 offsets: offsets.to_owned(),
                 offsets_16,
                 offsets_8,
-            }))
+            })
         }
     }
 
     impl TokRes {
         #[diplomat::attr(auto, indexer)]
+        #[diplomat::attr(java, disable)]
         pub fn get<'a>(&'a self, i: i32) -> Option<&'a str> {
             self.0.get_tokens().get(i as usize).map(AsRef::as_ref)
+        }
+
+        pub fn get_by_idx<'a>(&'a self, i: i32) -> &'a str {
+            self.0
+                .get_tokens()
+                .get(i as usize)
+                .map(AsRef::as_ref)
+                .expect("Out of bounds!")
+        }
+
+        pub fn len(&self) -> i32 {
+            self.0.get_tokens().len() as i32
+        }
+
+        pub fn is_empty(&self) -> bool {
+            self.0.get_tokens().is_empty()
         }
     }
 
@@ -99,6 +118,7 @@ pub mod ffi {
             Box::new(Stem(stemmer))
         }
 
+        #[diplomat::attr(java, disable)]
         pub fn stem(&self, strs: &[DiplomatUtf8StrSlice]) -> Box<Strings> {
             Box::new(Strings(
                 strs.iter()
@@ -128,11 +148,47 @@ pub mod ffi {
 
     impl EncodeResult {
         #[diplomat::attr(auto, indexer)]
+        #[diplomat::attr(java, disable)]
         pub fn get(&self, i: i32) -> Option<TokenSpan> {
             self.offsets_16
                 .get(i as usize)
                 .copied()
                 .map(|(start, end)| TokenSpan { start, end })
+        }
+
+        pub fn get_by_idx(&self, i: i32) -> TokenSpan {
+            self.offsets_16
+                .get(i as usize)
+                .copied()
+                .map(|(start, end)| TokenSpan { start, end })
+                .expect("Out of bounds")
+        }
+
+        pub fn len(&self) -> i32 {
+            self.offsets_16.len() as i32
+        }
+
+        pub fn is_empty(&self) -> bool {
+            self.offsets_16.is_empty()
+        }
+
+        pub fn pair_seq(&self) -> Box<PairSeq> {
+            let inner = self
+                .offsets_16
+                .iter()
+                .flat_map(|(start, end)| [*start as i32, *end as i32].into_iter())
+                .collect::<Vec<_>>();
+            Box::new(PairSeq(inner))
+        }
+    }
+
+    #[diplomat::opaque]
+    pub struct PairSeq(Vec<i32>);
+
+    impl PairSeq {
+        #[allow(clippy::needless_lifetimes)]
+        pub fn get_slice<'a>(&'a self) -> &'a [i32] {
+            self.0.as_ref()
         }
     }
 }

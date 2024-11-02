@@ -1,3 +1,4 @@
 .gradle/
 librustnlp.dylib
 gradle/
+build/**
