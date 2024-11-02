@@ -45,6 +45,6 @@ criterion_group!(
     benches,
     bench_tokenize,
     bench_offsets,
-    // bench_whitespace_tokenize
+    bench_whitespace_tokenize
 );
 criterion_main!(benches);
