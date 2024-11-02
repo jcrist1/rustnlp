@@ -16,9 +16,6 @@ const stuff = () => {
 `;
     var suite = new Benchmark.Suite();
     suite
-        // .add("Tokenize FFI overhead", () => {
-        //   tok.tokenize(data);
-        // })
         .add("Tokenize int slice", () => {
         var res = tok.tokenizeAsOffsets(data);
         var offsets = res.pairSeq().getSlice();

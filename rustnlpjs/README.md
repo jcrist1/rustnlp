@@ -1,15 +1,37 @@
 # rustnlpjs
 
-To install dependencies:
+Install dependencies:
 
 ```bash
 bun install
 ```
 
+build wasm from parent directory
+
+```bash
+cargo build --release --target=wasm32-unknown-unknown
+```
+
+copy wasm to `./api/` in this directory
+
+```bash
+cp ../target/wasm32-unknown-unknown/relase/rustnlp.wasm api/
+```
+
+Run wasm bindgen
+
+```bash
+wasm-bindgen api/rustnlp.wasm
+```
+
 To run:
 
 ```bash
-bun run index.mjs
+bun index.ts
 ```
 
-This project was created using `bun init` in bun v1.1.29. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+To run the benchmark run
+
+```bash
+bun bench.ts
+```

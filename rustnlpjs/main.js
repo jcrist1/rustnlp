@@ -1,4 +1,4 @@
-import { Tok } from "./api/Tok.mjs";
+import { Tok } from "./api/Tok";
 import pkg from "benchmark";
 const { Benchmark } = pkg;
 var tok = Tok.create();
@@ -16,11 +16,12 @@ var data = `
 const res1 = tok.tokenize(data);
 console.log(res1.len());
 var res = tok.tokenizeAsOffsets(data);
-var offsets = res.pairSeq().getSlice().buffer;
+var offsets = res.pairSeq().getSlice();
 var tokens = [];
+console.log(offsets);
 for (var i = 0; i < offsets.length / 2; i++) {
-  const start = offsets[2 * i];
-  const end = offsets[2 * i + 1];
-  tokens.push(data.slice(start, end));
+    const start = offsets[2 * i];
+    const end = offsets[2 * i + 1];
+    tokens.push(data.slice(start, end));
 }
 console.log(tokens);

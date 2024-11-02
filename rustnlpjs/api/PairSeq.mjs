@@ -57,7 +57,7 @@ export class PairSeq {
         diplomatReceive.buffer,
         "i32",
         aEdges,
-      );
+      ).buffer;
     } finally {
       diplomatReceive.free();
     }

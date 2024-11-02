@@ -19,6 +19,7 @@ console.log(res1.len());
 var res = tok.tokenizeAsOffsets(data);
 var offsets = res.pairSeq().getSlice();
 var tokens: string[] = [];
+console.log(offsets);
 for (var i = 0; i < offsets.length / 2; i++) {
   const start = offsets[2 * i];
   const end = offsets[2 * i + 1];

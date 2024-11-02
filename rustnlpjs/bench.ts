@@ -17,9 +17,6 @@ const stuff = () => {
 `;
   var suite = new Benchmark.Suite();
   suite
-    // .add("Tokenize FFI overhead", () => {
-    //   tok.tokenize(data);
-    // })
     .add("Tokenize int slice", () => {
       var res = tok.tokenizeAsOffsets(data);
       var offsets = res.pairSeq().getSlice();
@@ -30,7 +27,15 @@ const stuff = () => {
         tokens.push(data.slice(start, end));
       }
     })
-    .on("cycle", function (event) {
+    .on("complete", function() {
+      const benchmark = this[0];
+      const µsPerOp = 1000000 / benchmark.hz;
+
+      console.log(`Test: ${benchmark.name}`);
+      console.log(`Operations per second: ${benchmark.hz.toFixed(2)} ops/sec`);
+      console.log(`Seconds per operation: ${µsPerOp.toFixed(8)} µs/op`);
+    })
+    .on("cycle", function(event) {
       console.log(String(event.target));
     })
     .run();
