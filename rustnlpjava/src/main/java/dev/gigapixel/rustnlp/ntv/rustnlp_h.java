@@ -28,7 +28,7 @@ public class rustnlp_h {
          System.out.printf("%s(%s)\n", name, traceArgs);
     }
 
-    public static MemorySegment findOrThrow(String symbol) {
+    static MemorySegment findOrThrow(String symbol) {
         return SYMBOL_LOOKUP.find(symbol)
             .orElseThrow(() -> new UnsatisfiedLinkError("unresolved symbol: " + symbol));
     }
@@ -248,6 +248,15 @@ public class rustnlp_h {
      */
     public static int __WORDSIZE() {
         return __WORDSIZE;
+    }
+    private static final int USE_CLANG_TYPES = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * #define USE_CLANG_TYPES 0
+     * }
+     */
+    public static int USE_CLANG_TYPES() {
+        return USE_CLANG_TYPES;
     }
     private static final int __PTHREAD_SIZE__ = (int)8176L;
     /**
@@ -996,6 +1005,24 @@ public class rustnlp_h {
     public static int __MAC_14_5() {
         return __MAC_14_5;
     }
+    private static final int __MAC_15_0 = (int)150000L;
+    /**
+     * {@snippet lang=c :
+     * #define __MAC_15_0 150000
+     * }
+     */
+    public static int __MAC_15_0() {
+        return __MAC_15_0;
+    }
+    private static final int __MAC_15_1 = (int)150100L;
+    /**
+     * {@snippet lang=c :
+     * #define __MAC_15_1 150100
+     * }
+     */
+    public static int __MAC_15_1() {
+        return __MAC_15_1;
+    }
     private static final int __IPHONE_2_0 = (int)20000L;
     /**
      * {@snippet lang=c :
@@ -1707,6 +1734,24 @@ public class rustnlp_h {
     public static int __IPHONE_17_5() {
         return __IPHONE_17_5;
     }
+    private static final int __IPHONE_18_0 = (int)180000L;
+    /**
+     * {@snippet lang=c :
+     * #define __IPHONE_18_0 180000
+     * }
+     */
+    public static int __IPHONE_18_0() {
+        return __IPHONE_18_0;
+    }
+    private static final int __IPHONE_18_1 = (int)180100L;
+    /**
+     * {@snippet lang=c :
+     * #define __IPHONE_18_1 180100
+     * }
+     */
+    public static int __IPHONE_18_1() {
+        return __IPHONE_18_1;
+    }
     private static final int __WATCHOS_1_0 = (int)10000L;
     /**
      * {@snippet lang=c :
@@ -2129,6 +2174,24 @@ public class rustnlp_h {
      */
     public static int __WATCHOS_10_5() {
         return __WATCHOS_10_5;
+    }
+    private static final int __WATCHOS_11_0 = (int)110000L;
+    /**
+     * {@snippet lang=c :
+     * #define __WATCHOS_11_0 110000
+     * }
+     */
+    public static int __WATCHOS_11_0() {
+        return __WATCHOS_11_0;
+    }
+    private static final int __WATCHOS_11_1 = (int)110100L;
+    /**
+     * {@snippet lang=c :
+     * #define __WATCHOS_11_1 110100
+     * }
+     */
+    public static int __WATCHOS_11_1() {
+        return __WATCHOS_11_1;
     }
     private static final int __TVOS_9_0 = (int)90000L;
     /**
@@ -2562,6 +2625,24 @@ public class rustnlp_h {
     public static int __TVOS_17_5() {
         return __TVOS_17_5;
     }
+    private static final int __TVOS_18_0 = (int)180000L;
+    /**
+     * {@snippet lang=c :
+     * #define __TVOS_18_0 180000
+     * }
+     */
+    public static int __TVOS_18_0() {
+        return __TVOS_18_0;
+    }
+    private static final int __TVOS_18_1 = (int)180100L;
+    /**
+     * {@snippet lang=c :
+     * #define __TVOS_18_1 180100
+     * }
+     */
+    public static int __TVOS_18_1() {
+        return __TVOS_18_1;
+    }
     private static final int __BRIDGEOS_2_0 = (int)20000L;
     /**
      * {@snippet lang=c :
@@ -2796,6 +2877,24 @@ public class rustnlp_h {
     public static int __BRIDGEOS_8_5() {
         return __BRIDGEOS_8_5;
     }
+    private static final int __BRIDGEOS_9_0 = (int)90000L;
+    /**
+     * {@snippet lang=c :
+     * #define __BRIDGEOS_9_0 90000
+     * }
+     */
+    public static int __BRIDGEOS_9_0() {
+        return __BRIDGEOS_9_0;
+    }
+    private static final int __BRIDGEOS_9_1 = (int)90100L;
+    /**
+     * {@snippet lang=c :
+     * #define __BRIDGEOS_9_1 90100
+     * }
+     */
+    public static int __BRIDGEOS_9_1() {
+        return __BRIDGEOS_9_1;
+    }
     private static final int __DRIVERKIT_19_0 = (int)190000L;
     /**
      * {@snippet lang=c :
@@ -2913,6 +3012,24 @@ public class rustnlp_h {
     public static int __DRIVERKIT_23_5() {
         return __DRIVERKIT_23_5;
     }
+    private static final int __DRIVERKIT_24_0 = (int)240000L;
+    /**
+     * {@snippet lang=c :
+     * #define __DRIVERKIT_24_0 240000
+     * }
+     */
+    public static int __DRIVERKIT_24_0() {
+        return __DRIVERKIT_24_0;
+    }
+    private static final int __DRIVERKIT_24_1 = (int)240100L;
+    /**
+     * {@snippet lang=c :
+     * #define __DRIVERKIT_24_1 240100
+     * }
+     */
+    public static int __DRIVERKIT_24_1() {
+        return __DRIVERKIT_24_1;
+    }
     private static final int __VISIONOS_1_0 = (int)10000L;
     /**
      * {@snippet lang=c :
@@ -2940,6 +3057,24 @@ public class rustnlp_h {
     public static int __VISIONOS_1_2() {
         return __VISIONOS_1_2;
     }
+    private static final int __VISIONOS_2_0 = (int)20000L;
+    /**
+     * {@snippet lang=c :
+     * #define __VISIONOS_2_0 20000
+     * }
+     */
+    public static int __VISIONOS_2_0() {
+        return __VISIONOS_2_0;
+    }
+    private static final int __VISIONOS_2_1 = (int)20100L;
+    /**
+     * {@snippet lang=c :
+     * #define __VISIONOS_2_1 20100
+     * }
+     */
+    public static int __VISIONOS_2_1() {
+        return __VISIONOS_2_1;
+    }
     private static final int __ENABLE_LEGACY_MAC_AVAILABILITY = (int)1L;
     /**
      * {@snippet lang=c :
@@ -2957,6 +3092,24 @@ public class rustnlp_h {
      */
     public static int _FORTIFY_SOURCE() {
         return _FORTIFY_SOURCE;
+    }
+    private static final int USE_CLANG_STDARG = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * #define USE_CLANG_STDARG 0
+     * }
+     */
+    public static int USE_CLANG_STDARG() {
+        return USE_CLANG_STDARG;
+    }
+    private static final int USE_CLANG_STDDEF = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * #define USE_CLANG_STDDEF 0
+     * }
+     */
+    public static int USE_CLANG_STDDEF() {
+        return USE_CLANG_STDDEF;
     }
     private static final int RENAME_SECLUDE = (int)1L;
     /**
@@ -3762,94 +3915,16 @@ public class rustnlp_h {
     public static final AddressLayout __darwin_pthread_t = rustnlp_h.C_POINTER;
     /**
      * {@snippet lang=c :
-     * typedef unsigned char u_int8_t
+     * typedef __darwin_intptr_t intptr_t
      * }
      */
-    public static final OfByte u_int8_t = rustnlp_h.C_CHAR;
-    /**
-     * {@snippet lang=c :
-     * typedef unsigned short u_int16_t
-     * }
-     */
-    public static final OfShort u_int16_t = rustnlp_h.C_SHORT;
-    /**
-     * {@snippet lang=c :
-     * typedef unsigned int u_int32_t
-     * }
-     */
-    public static final OfInt u_int32_t = rustnlp_h.C_INT;
-    /**
-     * {@snippet lang=c :
-     * typedef unsigned long long u_int64_t
-     * }
-     */
-    public static final OfLong u_int64_t = rustnlp_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef int64_t register_t
-     * }
-     */
-    public static final OfLong register_t = rustnlp_h.C_LONG_LONG;
+    public static final OfLong intptr_t = rustnlp_h.C_LONG;
     /**
      * {@snippet lang=c :
      * typedef unsigned long uintptr_t
      * }
      */
     public static final OfLong uintptr_t = rustnlp_h.C_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef u_int64_t user_addr_t
-     * }
-     */
-    public static final OfLong user_addr_t = rustnlp_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef u_int64_t user_size_t
-     * }
-     */
-    public static final OfLong user_size_t = rustnlp_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef int64_t user_ssize_t
-     * }
-     */
-    public static final OfLong user_ssize_t = rustnlp_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef int64_t user_long_t
-     * }
-     */
-    public static final OfLong user_long_t = rustnlp_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef u_int64_t user_ulong_t
-     * }
-     */
-    public static final OfLong user_ulong_t = rustnlp_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef int64_t user_time_t
-     * }
-     */
-    public static final OfLong user_time_t = rustnlp_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef int64_t user_off_t
-     * }
-     */
-    public static final OfLong user_off_t = rustnlp_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef u_int64_t syscall_arg_t
-     * }
-     */
-    public static final OfLong syscall_arg_t = rustnlp_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef __darwin_intptr_t intptr_t
-     * }
-     */
-    public static final OfLong intptr_t = rustnlp_h.C_LONG;
     /**
      * {@snippet lang=c :
      * typedef long intmax_t
@@ -4243,6 +4318,84 @@ public class rustnlp_h {
     public static final OfInt __darwin_wctype_t = rustnlp_h.C_INT;
     /**
      * {@snippet lang=c :
+     * typedef unsigned char u_int8_t
+     * }
+     */
+    public static final OfByte u_int8_t = rustnlp_h.C_CHAR;
+    /**
+     * {@snippet lang=c :
+     * typedef unsigned short u_int16_t
+     * }
+     */
+    public static final OfShort u_int16_t = rustnlp_h.C_SHORT;
+    /**
+     * {@snippet lang=c :
+     * typedef unsigned int u_int32_t
+     * }
+     */
+    public static final OfInt u_int32_t = rustnlp_h.C_INT;
+    /**
+     * {@snippet lang=c :
+     * typedef unsigned long long u_int64_t
+     * }
+     */
+    public static final OfLong u_int64_t = rustnlp_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
+     * typedef int64_t register_t
+     * }
+     */
+    public static final OfLong register_t = rustnlp_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
+     * typedef u_int64_t user_addr_t
+     * }
+     */
+    public static final OfLong user_addr_t = rustnlp_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
+     * typedef u_int64_t user_size_t
+     * }
+     */
+    public static final OfLong user_size_t = rustnlp_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
+     * typedef int64_t user_ssize_t
+     * }
+     */
+    public static final OfLong user_ssize_t = rustnlp_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
+     * typedef int64_t user_long_t
+     * }
+     */
+    public static final OfLong user_long_t = rustnlp_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
+     * typedef u_int64_t user_ulong_t
+     * }
+     */
+    public static final OfLong user_ulong_t = rustnlp_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
+     * typedef int64_t user_time_t
+     * }
+     */
+    public static final OfLong user_time_t = rustnlp_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
+     * typedef int64_t user_off_t
+     * }
+     */
+    public static final OfLong user_off_t = rustnlp_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
+     * typedef u_int64_t syscall_arg_t
+     * }
+     */
+    public static final OfLong syscall_arg_t = rustnlp_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
      * typedef __darwin_va_list va_list
      * }
      */
@@ -4428,6 +4581,78 @@ public class rustnlp_h {
             return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    /**
+     * Variadic invoker class for:
+     * {@snippet lang=c :
+     * int printf(const char *restrict, ...)
+     * }
+     */
+    public static class printf {
+        private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
+                rustnlp_h.C_INT,
+                rustnlp_h.C_POINTER
+            );
+        private static final MemorySegment ADDR = rustnlp_h.findOrThrow("printf");
+
+        private final MethodHandle handle;
+        private final FunctionDescriptor descriptor;
+        private final MethodHandle spreader;
+
+        private printf(MethodHandle handle, FunctionDescriptor descriptor, MethodHandle spreader) {
+            this.handle = handle;
+            this.descriptor = descriptor;
+            this.spreader = spreader;
+        }
+
+        /**
+         * Variadic invoker factory for:
+         * {@snippet lang=c :
+         * int printf(const char *restrict, ...)
+         * }
+         */
+        public static printf makeInvoker(MemoryLayout... layouts) {
+            FunctionDescriptor desc$ = BASE_DESC.appendArgumentLayouts(layouts);
+            Linker.Option fva$ = Linker.Option.firstVariadicArg(BASE_DESC.argumentLayouts().size());
+            var mh$ = Linker.nativeLinker().downcallHandle(ADDR, desc$, fva$);
+            var spreader$ = mh$.asSpreader(Object[].class, layouts.length);
+            return new printf(mh$, desc$, spreader$);
+        }
+
+        /**
+         * {@return the address}
+         */
+        public static MemorySegment address() {
+            return ADDR;
+        }
+
+        /**
+         * {@return the specialized method handle}
+         */
+        public MethodHandle handle() {
+            return handle;
+        }
+
+        /**
+         * {@return the specialized descriptor}
+         */
+        public FunctionDescriptor descriptor() {
+            return descriptor;
+        }
+
+        public int apply(MemorySegment x0, Object... x1) {
+            try {
+                if (TRACE_DOWNCALLS) {
+                    traceDowncall("printf", x0, x1);
+                }
+                return (int)spreader.invokeExact(x0, x1);
+            } catch(IllegalArgumentException | ClassCastException ex$)  {
+                throw ex$; // rethrow IAE from passing wrong number/type of args
+            } catch (Throwable ex$) {
+               throw new AssertionError("should not reach here", ex$);
+            }
         }
     }
     /**
@@ -5946,78 +6171,6 @@ public class rustnlp_h {
             mh$.invokeExact(x0);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    /**
-     * Variadic invoker class for:
-     * {@snippet lang=c :
-     * int printf(const char *restrict, ...)
-     * }
-     */
-    public static class printf {
-        private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                rustnlp_h.C_INT,
-                rustnlp_h.C_POINTER
-            );
-        private static final MemorySegment ADDR = rustnlp_h.findOrThrow("printf");
-
-        private final MethodHandle handle;
-        private final FunctionDescriptor descriptor;
-        private final MethodHandle spreader;
-
-        private printf(MethodHandle handle, FunctionDescriptor descriptor, MethodHandle spreader) {
-            this.handle = handle;
-            this.descriptor = descriptor;
-            this.spreader = spreader;
-        }
-
-        /**
-         * Variadic invoker factory for:
-         * {@snippet lang=c :
-         * int printf(const char *restrict, ...)
-         * }
-         */
-        public static printf makeInvoker(MemoryLayout... layouts) {
-            FunctionDescriptor desc$ = BASE_DESC.appendArgumentLayouts(layouts);
-            Linker.Option fva$ = Linker.Option.firstVariadicArg(BASE_DESC.argumentLayouts().size());
-            var mh$ = Linker.nativeLinker().downcallHandle(ADDR, desc$, fva$);
-            var spreader$ = mh$.asSpreader(Object[].class, layouts.length);
-            return new printf(mh$, desc$, spreader$);
-        }
-
-        /**
-         * {@return the address}
-         */
-        public static MemorySegment address() {
-            return ADDR;
-        }
-
-        /**
-         * {@return the specialized method handle}
-         */
-        public MethodHandle handle() {
-            return handle;
-        }
-
-        /**
-         * {@return the specialized descriptor}
-         */
-        public FunctionDescriptor descriptor() {
-            return descriptor;
-        }
-
-        public int apply(MemorySegment x0, Object... x1) {
-            try {
-                if (TRACE_DOWNCALLS) {
-                    traceDowncall("printf", x0, x1);
-                }
-                return (int)spreader.invokeExact(x0, x1);
-            } catch(IllegalArgumentException | ClassCastException ex$)  {
-                throw ex$; // rethrow IAE from passing wrong number/type of args
-            } catch (Throwable ex$) {
-               throw new AssertionError("should not reach here", ex$);
-            }
         }
     }
 
@@ -10642,7 +10795,7 @@ public class rustnlp_h {
         }
     }
 
-    public static class Tok_tokenize {
+    private static class Tok_tokenize {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             rustnlp_h.C_POINTER,
             rustnlp_h.C_POINTER,
@@ -11089,13 +11242,13 @@ public class rustnlp_h {
     }
     /**
      * {@snippet lang=c :
-     * #define __ASSERT_FILE_NAME "jextract$1852946489405943087.h"
+     * #define __ASSERT_FILE_NAME "jextract$9802059673905833130.h"
      * }
      */
     public static MemorySegment __ASSERT_FILE_NAME() {
         class Holder {
             static final MemorySegment __ASSERT_FILE_NAME
-                = rustnlp_h.LIBRARY_ARENA.allocateFrom("jextract$1852946489405943087.h");
+                = rustnlp_h.LIBRARY_ARENA.allocateFrom("jextract$9802059673905833130.h");
         }
         return Holder.__ASSERT_FILE_NAME;
     }
@@ -11116,15 +11269,6 @@ public class rustnlp_h {
      */
     public static MemorySegment __DARWIN_NULL() {
         return __DARWIN_NULL;
-    }
-    private static final long USER_ADDR_NULL = 0L;
-    /**
-     * {@snippet lang=c :
-     * #define USER_ADDR_NULL 0
-     * }
-     */
-    public static long USER_ADDR_NULL() {
-        return USER_ADDR_NULL;
     }
     private static final long INT64_MAX = 9223372036854775807L;
     /**
@@ -12098,10 +12242,28 @@ public class rustnlp_h {
     public static int MAC_OS_VERSION_14_5() {
         return MAC_OS_VERSION_14_5;
     }
-    private static final int __MAC_OS_X_VERSION_MAX_ALLOWED = (int)140500L;
+    private static final int MAC_OS_VERSION_15_0 = (int)150000L;
     /**
      * {@snippet lang=c :
-     * #define __MAC_OS_X_VERSION_MAX_ALLOWED 140500
+     * #define MAC_OS_VERSION_15_0 150000
+     * }
+     */
+    public static int MAC_OS_VERSION_15_0() {
+        return MAC_OS_VERSION_15_0;
+    }
+    private static final int MAC_OS_VERSION_15_1 = (int)150100L;
+    /**
+     * {@snippet lang=c :
+     * #define MAC_OS_VERSION_15_1 150100
+     * }
+     */
+    public static int MAC_OS_VERSION_15_1() {
+        return MAC_OS_VERSION_15_1;
+    }
+    private static final int __MAC_OS_X_VERSION_MAX_ALLOWED = (int)150100L;
+    /**
+     * {@snippet lang=c :
+     * #define __MAC_OS_X_VERSION_MAX_ALLOWED 150100
      * }
      */
     public static int __MAC_OS_X_VERSION_MAX_ALLOWED() {
@@ -12133,6 +12295,15 @@ public class rustnlp_h {
      */
     public static int __DARWIN_WEOF() {
         return __DARWIN_WEOF;
+    }
+    private static final long USER_ADDR_NULL = 0L;
+    /**
+     * {@snippet lang=c :
+     * #define USER_ADDR_NULL 0
+     * }
+     */
+    public static long USER_ADDR_NULL() {
+        return USER_ADDR_NULL;
     }
     private static final int EOF = (int)-1L;
     /**

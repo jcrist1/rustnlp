@@ -49,7 +49,7 @@ public class TokRes {
             
             var iNative = i;
             var nativeVal = rustnlp_h.TokRes_get_by_idx(arena, internal, iNative);
-
+            
             var returnVal = SliceUtils.readUtf8(nativeVal);
             return returnVal;
                     
